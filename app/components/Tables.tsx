@@ -21,7 +21,7 @@ export interface DataTable {
 
 
 const DataTable = ({ }) => {
-    const { isAuthenticated, userType } = useAuth()
+    const { isAuthenticated, userType , userId} = useAuth()
     const [data, setData] = useState<DataTable[]>([]);
     const [isChanged, setIsChanged] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -59,7 +59,7 @@ const DataTable = ({ }) => {
         }, [isChanged]);
     }
 
-    const columns = pathname === "/users"
+    const columns = pathname === "/users" && userType !== "User"
         ? [
             { field: 'fullName', headerName: 'Name', width: 200 },
             { field: 'email', headerName: 'E mail', width: 300 },
@@ -133,7 +133,7 @@ const DataTable = ({ }) => {
                 filterable: false,
                 disableColumnMenu: true,
                 renderCell: (DataTable: any) => {
-                    if (userType === "Customer") {
+                    if (userType == 'Customer' || (userType == 'User' && DataTable.row.user !== userId)) {
                         return (
                             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                             </div>
@@ -160,7 +160,7 @@ const DataTable = ({ }) => {
                 filterable: false,
                 disableColumnMenu: true,
                 renderCell: (DataTable: any) => {
-                    if (userType === "User") {
+                    if (userType == 'Customer' || (userType == 'User' && DataTable.row.user !== userId)) {
                         return (
                             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
                             </div>
@@ -178,10 +178,6 @@ const DataTable = ({ }) => {
                 },
             },
         ];
-    if (userType === "User") {
-        return <Customers />
-    }
-
     return (
         <>
             {!isAuthenticated ? (
@@ -196,7 +192,7 @@ const DataTable = ({ }) => {
             >
                 <Box sx={{ backgroundColor: 'white', padding: 2 }}>
                     <Grid container spacing={2}>
-                        <Grid size={9}>
+                        <Grid size={10}>
                             <Typography variant="h4" component="h2" style={{
                                 display: 'flex',
                                 padding: 3
@@ -204,7 +200,7 @@ const DataTable = ({ }) => {
                                 {pageType.charAt(0).toUpperCase() + pageType.slice(1)}
                             </Typography>
                         </Grid>
-                        {userType !== "Customer" ? <Grid size={3} sx={{ paddingLeft: 5 }}>
+                        {userType !== "User" ? <Grid size={2} sx={{ paddingLeft: 3 }}>
                             <Button variant="outlined"> <Link href={`/${pageType}/create`} >+ {pageType.charAt(0).toUpperCase() + pageType.slice(1)}</Link></Button>
                         </Grid> : " "}
                     </Grid>

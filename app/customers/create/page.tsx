@@ -1,9 +1,9 @@
-import CreateCustomer from '@/app/components/CreateCustomer'
+import CreateForm from '@/app/components/CreateForm'
 import React from 'react'
 
 const page = () => {
   return (
-    <CreateCustomer/>
+    <CreateForm/>
   )
 }
 

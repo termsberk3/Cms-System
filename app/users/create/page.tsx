@@ -1,9 +1,9 @@
-import CreateUser from '@/app/components/CreateUser'
+import CreateForm from '@/app/components/CreateForm'
 import React from 'react'
 
 const page = () => {
   return (
-    <CreateUser postType="User"/>
+    <CreateForm/>
   )
 }
 
