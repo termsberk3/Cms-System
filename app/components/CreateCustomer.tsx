@@ -19,6 +19,7 @@ const CreateCustomer = () => {
     const [fullName, setFullName] = useState<string>("");
     const [email, setEmail] = useState<string>("");
     const [user, setUser] = useState<string>("");
+    const [userName, setUserName] = useState<string>("");
     const [userData, setUserData] = useState([])
 
     const router = useRouter();
@@ -38,7 +39,7 @@ const CreateCustomer = () => {
                 headers: {
                     "Content-type": "application/json",
                 },
-                body: JSON.stringify({ fullName, email, user }),
+                body: JSON.stringify({ fullName, email, user, userName }),
             });
 
             if (res.ok) {
@@ -64,7 +65,6 @@ const CreateCustomer = () => {
     useEffect(() => {
         fetchUsers()
     }, [])
-    console.log(userData)
     return (
         <Container maxWidth="md" sx={{ marginTop: 10, padding: 3 }}>
             <form onSubmit={handleSubmit}>
@@ -101,7 +101,21 @@ const CreateCustomer = () => {
                             onChange={(e) => setUser(e.target.value)}
                         >
                             {userData.map(i => (
-                                <MenuItem key={(i as any)._id} value={(i as any)._id}>{(i as any).fullName}</MenuItem>
+                                <MenuItem key={(i as any)._id} value={(i as any)._id}>{(i as any)._id}</MenuItem>
+                            ))}
+
+                        </Select>
+                    </FormControl>
+                    <FormControl sx={{ padding: 1 }}>
+                        <Select
+                            labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={userName}
+                            label="Age"
+                            onChange={(e) => setUserName(e.target.value)}
+                        >
+                            {userData.map(i => (
+                                <MenuItem key={(i as any)._id} value={(i as any).fullName}>{(i as any).fullName}</MenuItem>
                             ))}
 
                         </Select>

@@ -9,13 +9,15 @@ interface ICustomer {
     fullName: string;
     email: string;
     user: any;
+    userName: any;
 }
 
 const customerSchema: Schema<ICustomer> = new Schema(
     {
         fullName: { type: String, required: true },
         email: { type: String, required: true },
-        user: { type: Schema.Types.ObjectId, ref: 'Users' },
+        user: { type: Schema.Types.ObjectId, ref: 'Admins' },
+        userName: { type: Schema.Types.String, ref: 'Admins' }
     },
     {
         timestamps: true,
@@ -26,4 +28,3 @@ const Customer = mongoose.models.Customers || mongoose.model<ICustomer>("Custome
 
 export default Customer;
 
-//customer => user

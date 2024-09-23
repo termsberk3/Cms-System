@@ -29,7 +29,6 @@ const DataTable = ({ }) => {
     const router = useRouter();
     const pathname = usePathname()
     const pageType = pathname.startsWith('/users') ? 'users' : 'customers';
-    console.log(pathname)
     if (pathname === "/users") {
         const fetchData = async () => {
             try {
@@ -123,7 +122,7 @@ const DataTable = ({ }) => {
         : [
             { field: 'fullName', headerName: 'Name', width: 200 },
             { field: 'email', headerName: 'E mail', width: 300 },
-            { field: 'user', headerName: 'User', width: 300 },
+            { field: 'userName', headerName: 'User', width: 300 },
             {
                 field: 'edit',
                 headerName: 'Edit',
@@ -206,7 +205,7 @@ const DataTable = ({ }) => {
                             </Typography>
                         </Grid>
                         {userType !== "Customer" ? <Grid size={3} sx={{ paddingLeft: 5 }}>
-                            <Button variant="outlined"> <Link href={"users/create"} >+ {pageType.charAt(0).toUpperCase() + pageType.slice(1)}</Link></Button>
+                            <Button variant="outlined"> <Link href={`/${pageType}/create`} >+ {pageType.charAt(0).toUpperCase() + pageType.slice(1)}</Link></Button>
                         </Grid> : " "}
                     </Grid>
                     <DataGrid

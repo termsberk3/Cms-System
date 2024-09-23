@@ -8,9 +8,9 @@ export async function GET(): Promise<NextResponse> {
   return NextResponse.json({ customers });
 }
 export async function POST(request: Request): Promise<Response> {
-  const { fullName, email, user }: { fullName: string; email: string; user: string } = await request.json();
+  const { fullName, email, user, userName }: { fullName: string; email: string; user: string , userName: string} = await request.json();
   await connectToMongoDB();
-  await Customer.create({ fullName, email, user });
+  await Customer.create({ fullName, email, user, userName });
   return NextResponse.json({ message: "Customer Created" }, { status: 201 });
 }
 
