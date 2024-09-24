@@ -17,7 +17,6 @@ function Header() {
         logout();
         router.push('/login');
     }
-    console.log(userType)
     return (
         <>
             {!isAuthenticated ? (

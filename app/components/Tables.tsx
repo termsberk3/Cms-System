@@ -14,6 +14,7 @@ import { useAuth } from '../contexts/AuthContext';
 import LoginForm from './LoginForm';
 import Customers from '../customers/page';
 import { usePathname, useRouter } from "next/navigation";
+import Buttons from './Buttons';
 
 export interface DataTable {
     id: string;
@@ -21,7 +22,7 @@ export interface DataTable {
 
 
 const DataTable = ({ }) => {
-    const { isAuthenticated, userType , userId} = useAuth()
+    const { isAuthenticated, userType, userId } = useAuth()
     const [data, setData] = useState<DataTable[]>([]);
     const [isChanged, setIsChanged] = useState<boolean>(true);
     const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -191,19 +192,6 @@ const DataTable = ({ }) => {
                 }}
             >
                 <Box sx={{ backgroundColor: 'white', padding: 2 }}>
-                    <Grid container spacing={2}>
-                        <Grid size={10}>
-                            <Typography variant="h4" component="h2" style={{
-                                display: 'flex',
-                                padding: 3
-                            }}>
-                                {pageType.charAt(0).toUpperCase() + pageType.slice(1)}
-                            </Typography>
-                        </Grid>
-                        {userType !== "User" ? <Grid size={2} sx={{ paddingLeft: 3 }}>
-                            <Button variant="outlined"> <Link href={`/${pageType}/create`} >+ {pageType.charAt(0).toUpperCase() + pageType.slice(1)}</Link></Button>
-                        </Grid> : " "}
-                    </Grid>
                     <DataGrid
                         rows={data}
                         columns={columns}

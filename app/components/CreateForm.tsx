@@ -156,11 +156,11 @@ const CreateForm = () => {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={user}
-                            label="Age"
+                            label="Id"
                             onChange={(e) => setUser(e.target.value)}
                         >
                             {userData.map(i => (
-                                <MenuItem key={(i as any)._id} value={(i as any)._id}>{(i as any).fullName}</MenuItem>
+                                <MenuItem key={(i as any)._id} value={(i as any)._id}>{(i as any)._id} {(i as any).fullName}</MenuItem>
                             ))}
 
                         </Select>
@@ -170,7 +170,7 @@ const CreateForm = () => {
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
                             value={userName}
-                            label="Age"
+                            label="User"
                             onChange={(e) => setUserName(e.target.value)}
                         >
                             {userData.map(i => (
