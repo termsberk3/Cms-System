@@ -27,9 +27,10 @@ This is a Full-Stack application that manages both Front-End and Back-End side, 
    Create a new .env file on your local
    MONGODB_URI = Your mongoDB connection because MongoDB is used on this project for data storing
    JWT_SECRET = Add a secret key in order to create a new profile
+   <br/>
    Creation of Admin user can be done from postman, therefore use http://localhost:3000/api/auth/register on postman to create a new profile
    body of the request will be;
-       ```
+     
    {
   "email": "youremail",
   "password": "password of your choise",
