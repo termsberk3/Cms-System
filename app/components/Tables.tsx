@@ -188,7 +188,6 @@ const DataTable = ({ }) => {
                     display: 'flex',
                     justifyContent: 'center',
                     alignItems: 'center',
-                    height: '100vh',
                 }}
             >
                 <Box sx={{ backgroundColor: 'white', padding: 2 }}>

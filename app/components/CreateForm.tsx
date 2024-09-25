@@ -10,6 +10,7 @@ import { Button } from '@mui/material';
 import { useRouter } from "next/navigation";
 import { usePathname } from 'next/navigation';
 import axios from "axios";
+import Buttons from "./Buttons";
 
 
 const CreateForm = () => {
@@ -125,7 +126,7 @@ const CreateForm = () => {
                         />
                     </FormControl>
                     <FormControl sx={{ padding: 1 }}>
-                        <Button className="bg-green-600 font-bold text-white py-3 px-6 w-fit" type="submit" >+ Create</Button>
+                        <Buttons type="submit" >+ Create</Buttons>
                     </FormControl>
                 </FormGroup> : <FormGroup >
                     <FormControl sx={{ padding: 1 }}>
@@ -180,7 +181,7 @@ const CreateForm = () => {
                         </Select>
                     </FormControl>
                     <FormControl sx={{ padding: 1 }}>
-                        <Button type='submit' sx={{ width: 100 }}>+ Create</Button>
+                        <Buttons type='submit' sx={{ width: 100 }}/>
                     </FormControl>
                 </FormGroup>
                 }

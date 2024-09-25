@@ -6,38 +6,68 @@ import { Button, Link, Typography } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 
 interface ButtonProps {
-    updateType?: string | null;
     createType?: string | null;
+    tableType?: string | null;
     children?: any;
     variant?: any;
     type?: any;
     sx?: any;
 }
 
-const Buttons: FC<ButtonProps> = ({ updateType, createType, children }) => {
+const Buttons: FC<ButtonProps> = ({ tableType, createType, children }) => {
     const { isAuthenticated, logout, userType } = useAuth()
     const router = useRouter()
     const pathname = usePathname()
-    updateType = pathname.startsWith('/users') ? 'users' : 'customers';
-    createType = pathname.includes('create') ? 'users' : 'customers';
+    tableType = pathname.includes('/create') ? 'no-show' : 'dataTable';
+    createType = pathname.includes('/create') ? 'create' : 'non-create';
+   
 
     return (
         <>
-            <Grid container spacing={2}>
-                <Grid size={10}>
-                    <Typography variant="h4" component="h2" style={{
+            {tableType === "dataTable" ?
+                <div
+                    style={{
                         display: 'flex',
-                        padding: 3
-                    }}>
-                        {updateType.charAt(0).toUpperCase() + updateType.slice(1)}
-                    </Typography>
-                </Grid>
-                <Grid size={2}>
-                    {updateType === "users" ?
-                        <Button variant="outlined"> <Link href={"/users/create"} >Create {updateType.charAt(0).toUpperCase() + updateType.slice(1)}</Link></Button>
-                        : <Button variant="outlined"> <Link href={"/customers/create"} >Create {updateType.charAt(0).toUpperCase() + updateType.slice(1)}</Link></Button>}
-                </Grid>
-            </Grid>
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        paddingTop: "10vh",
+                    }}
+                >
+                    <Grid container spacing={2} width={1000}>
+                        <Grid size={8} textAlign="left" >
+                            <Typography variant="h4" component="h2">
+                                {pathname.charAt(1).toUpperCase() + pathname.slice(2)}
+                            </Typography>
+                        </Grid>
+                        <Grid size={4} textAlign="right" >
+                            <Button variant="outlined"> <Link href={`${pathname}/create`} >Create {pathname.charAt(1).toUpperCase() + pathname.slice(2)}</Link></Button>
+                        </Grid>
+                    </Grid>
+                </div> : <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+
+                    }}
+                >
+                </div>
+            }
+            {createType === "create" ?
+                <div
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}
+                >
+                    <Grid container spacing={2} width={1000}>
+                        <Grid size={12} textAlign="left" >
+                            <Button type="submit" variant="outlined"> Create</Button>
+                        </Grid>
+                    </Grid>
+                </div> : <div></div>
+            }
         </>
     )
 }
