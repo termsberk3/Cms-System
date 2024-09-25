@@ -28,8 +28,7 @@ const Buttons: FC<ButtonProps> = ({ tableType, createType, children }) => {
                 <div
                     style={{
                         display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
+                        justifyContent: 'space-evenly',
                         paddingTop: "10vh",
                     }}
                 >

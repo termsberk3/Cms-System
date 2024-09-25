@@ -98,6 +98,20 @@ const UpdateForm: FC<EditFormProps> = ({ id, email }) => {
             <Container maxWidth="md" sx={{ marginTop: 10, padding: 3 }}>
                 <form onSubmit={(e) => handleSubmit(id, { email: newEmail}, e)}>
                     <FormGroup>
+                    <FormControl sx={{ padding: 1 }}>
+                            <TextField
+                                id="outlined-email"
+                                label="Email"
+                                variant="outlined"
+                                fullWidth
+                                required
+                                disabled={true}
+                                value={email}
+                                type="email"
+                            >
+                                {email}
+                            </TextField>
+                        </FormControl>
                         <FormControl sx={{ padding: 1 }}>
                             <TextField
                                 id="outlined-email"

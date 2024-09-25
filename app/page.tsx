@@ -1,4 +1,5 @@
 import { Typography } from "@mui/material";
+import Cards from "./components/Cards";
 
 export default function Home() {
   return (
@@ -9,7 +10,7 @@ export default function Home() {
         alignItems: 'center',
         height: '100vh',
       }}>
-        <Typography>Welcome to Main Page. Please navigate to User Or Customer Pages to continue</Typography>
+       <Cards/>
       </div>
     </>
   );
