@@ -29,14 +29,13 @@ This is a Full-Stack application that manages both Front-End and Back-End side, 
    JWT_SECRET = Add a secret key in order to create a new profile
    Creation of Admin user can be done from postman, therefore use http://localhost:3000/api/auth/register on postman to create a new profile
    body of the request will be;
-   ```
+       ```
    {
   "email": "youremail",
   "password": "password of your choise",
   "userType": "Admin",
   "fullName":"name of your desire"
 }
-    ```
 4. Start the development server:
     ```
     npm run dev
